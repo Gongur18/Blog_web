@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="panel panel-success text-center">
+    <div class="panel-heading">
+        <h2 class="panel-title">用户信息修改</h2>
+    </div>
+    <br/>
+    <form id="edit-form" method="post" class="form-horizontal" action="{% url 'webApp:user_edit' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="col-sm-5 control-label">用户名：</label>
+            <div class="col-sm-5">{{ user.username }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-5 control-label" for="email">邮箱：</label>
+          <div class="col-sm-5">
+              <input type="text" name="email" class="form-control" id="email" value={{ user.email }} />
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-5 control-label" for="name">昵称：</label>
+            <div class="col-sm-5">
+                <input type="text" name="name" class="form-control" id="name" value={{ user.name }} />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-5 control-label" for="password">密码：</label>
+            <div class="col-sm-5">
+                <input type="password" name="password" class="form-control" id="password" placeholder="留空不修改"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-5 control-label" for="repassword">重复密码：</label>
+            <div class="col-sm-5">
+                <input type="password" name="repassword" class="form-control" id="repassword" placeholder="留空不修改"/>
+            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-5"></div>
+          <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary">修改</button>
+          </div>
+          <div class="col-sm-2">
+            <button type="reset" class="btn btn-primary">重置</button>
+          </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

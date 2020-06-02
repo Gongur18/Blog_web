@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well text-center">
+    <form id="book-form" method="post" class="form-horizontal" action="{% url 'webApp:book_new' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <h3 class="text-primary">标题</h3>
+            <div>
+                <input type="text" name="title" class="form-control" value="" />
+            </div>
+            <h3 class="text-primary">内容</h3>
+            <div>
+                <textarea name="text" class="form-control" rows="25"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <div class="row center-block">
+                    <div class="col-sm-offset-3 col-sm-2">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">保存</button>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <button class="btn btn-default btn-lg btn-block" type="reset">重置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="panel panel-success text-center">
+    <div class="panel-heading">
+        <h2 class="panel-title">用户信息</h2>
+    </div>
+    <table class="table">
+        <tr><td>用户名</td><td>{{ user.username }}</td></tr>
+        <tr><td>邮箱</td><td>{{ user.email }}</td></tr>
+        <tr><td>昵称</td><td>{{ user.name }}</td></tr>
+        <tr><td>密码</td><td>**********</td></tr>
+    </table>
+    <div class="panel-heading">
+        <h2 class="panel-title">用户操作</h2>
+    </div>
+    <table class="table">
+        <tr>
+            <td><a href="{% url 'webApp:user_edit' %}">修改信息</a></td>
+            <td><a href="{% url 'webApp:user_delete' %}">注销账户</a></td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

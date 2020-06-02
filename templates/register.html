@@ -1,0 +1,72 @@
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content>
+      <meta name="author" content>
+
+      <link rel="icon" href="/static/icons.png">
+      <title>注册</title>
+      {% bootstrap_css %}
+      {% bootstrap_javascript %}
+      {% bootstrap_messages %}
+
+  </head>
+  
+  <body>
+    <div class="container container-fluid">
+      <br/>
+      <div class="well text-center">
+        <h2>新用户注册</h2>
+        <p>注册相当简单，只需花费几步！</p>
+        <p>已有账户？<a href="/login">去登录</a></p>
+      </div>
+      <div class="well">
+        <p class="text-primary text-center">{{ info }}</p>
+        <form id="register-form" method="post" class="form-horizontal" action="{% url 'webApp:register' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="username">账号：</label>
+                <div class="col-sm-3">
+                    <input type="text" name="username" class="form-control" id="username" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-5 control-label" for="email">邮箱：</label>
+              <div class="col-sm-3">
+                  <input type="text" name="email" class="form-control" id="email"/>
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="name">昵称：</label>
+                <div class="col-sm-3">
+                    <input type="text" name="name" class="form-control" id="name" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="password">密码：</label>
+                <div class="col-sm-3">
+                    <input type="password" name="password" class="form-control" id="password"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label" for="repassword">重复密码：</label>
+                <div class="col-sm-3">
+                    <input type="password" name="repassword" class="form-control" id="repassword"/>
+                </div>
+            </div>        
+            <div class="form-group">
+              <div class="col-sm-6"></div>
+              <div class="col-sm">
+                <button type="submit" class="btn btn-primary">注册</button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

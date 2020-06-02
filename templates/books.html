@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <div class="well">
+        <h1 class="text-primary">Welcome to Blogs!</h1>
+    </div>
+</div>
+<div class="list-group">
+    {% for book in bookList %}
+    <div class="list-group-item">
+        <h3><a href="{% url 'webApp:book_index' book.id %}">{{ book.title }}&nbsp;&nbsp;</a><small>
+            {% if book.author.id == request.session.user_id %}
+            <a href="{% url 'webApp:book_edit' book.id %}">编辑&nbsp;</a>
+            <a href="{% url 'webApp:book_delete' book.id %}">删除&nbsp;</a>
+            {% endif %}
+        </small></h3>
+        <p class="text-danger">{{ book.author.name }}</p>
+        <p class="text-primary">{{ book.date_added }}</p>
+        <p>{{ book.lessText }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="text-center">
+    <ul class="pagination">
+        <li {% if page_index == 1 %}class="disabled"{% endif %}><a href="{% url 'webApp:Books' page_index|add:-1 %}">&laquo;</a></li>
+        {% for p in page_list %}
+        <li {% if page_index == p %}class="active"{% endif %}>
+            <a href="{% url 'webApp:Books' p %}">{{ p }}</a>
+        </li>
+        {% endfor %}
+        <li {% if page_index == max_pages %}class="disabled"{% endif %}><a href="{% url 'webApp:Books' page_index|add:1 %}">&raquo;</a></li>
+    </ul>
+</div>
+
+{% endblock content %}
